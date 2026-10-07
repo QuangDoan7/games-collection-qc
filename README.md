@@ -8,6 +8,8 @@ The project covers the complete testing lifecycle, including requirements analys
 
 ## Application Under Test
 
+**Application Repository:** https://github.com/QuangDoan7/games-collection
+
 The application under test (AUT) is the Games Collection RESTful API, which provides endpoints for managing and retrieving information about games in the collection.
 
 The API supports CRUD operations through GET, POST, PUT, and DELETE requests.
