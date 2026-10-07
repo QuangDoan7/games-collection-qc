@@ -1,6 +1,6 @@
 # Games Collection API - Quality Control Project
 
-[![Games Collection API Tests](https://github.com/QuangDoan7/games-collection-qc/actions/workflows/api-tests.yml/badge.svg)](https://github.com/QuangDoan7/games-collection-qc/actions/workflows/api-tests.yml)
+[![Games Collection API Regression Tests](https://github.com/QuangDoan7/games-collection-qc/actions/workflows/api-tests.yml/badge.svg)](https://github.com/QuangDoan7/games-collection-qc/actions/workflows/api-tests.yml)
 
 ## Project Overview
 
