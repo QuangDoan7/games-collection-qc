@@ -1,0 +1,1411 @@
+{
+  "info": {
+    "_postman_id": "8eec255e-df36-4f4e-828a-251283ea8a22",
+    "name": "Games Collection API Tests",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58447770",
+    "_collection_link": "https://go.postman.co/collection/58447770-8eec255e-df36-4f4e-828a-251283ea8a22?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "GET Game by ID",
+      "item": [
+        {
+          "name": "TC-001 - Retrieve an Existing Game by ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\n\npm.test(\"Status code is 200.\", function() {\n    pm.response.to.have.status(200);\n});\n\npm.test(\"Retrieve game correctly.\", function() {\n    pm.expect(jsonData.id).to.eql(1);\n    pm.expect(jsonData.game).to.eql(\"The Legend of Zelda: Breath of the Wild\");\n    pm.expect(jsonData.platform).to.eql(\"Nintendo Switch\");\n    pm.expect(jsonData.releaseYear).to.eql(2017);\n    pm.expect(jsonData.genre).to.eql(\"Action-adventure, Open-world\");\n    pm.expect(jsonData.publisher).to.eql(\"Nintendo\");\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "1"
+              ]
+            },
+            "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+          },
+          "response": []
+        },
+        {
+          "name": "TC-002 - Retrieve a game with ID 0",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function() {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return correct error message.\", function() {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be greater than 0!\")\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/0",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "0"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-003 - Retrieve a game using a negative ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function() {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return correct error message.\", function() {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be greater than 0!\")\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/-22",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "-22"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-004 - Retrieve a game using a positive ID but non-existing in the collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function() {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return correct error message.\", function() {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found.\")\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/77",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "77"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-005 - Retrieve a game using an alphabetic ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function() {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return correct error message.\", function() {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be numeric and greater than 0!\")\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/abc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "abc"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-006 - Retrieve a game using special characters in the ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function() {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return correct error message.\", function() {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be numeric and greater than 0!\")\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/!@#",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "!@"
+              ],
+              "hash": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GET All Games in the collection",
+      "item": [
+        {
+          "name": "TC-007 - Retrieve all games in the collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 200.\", function() {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Retrieve all games successfully.\", function() {\r\n    for (let i = 0; i < jsonData.length; i++) {\r\n        pm.expect(jsonData[i].game).to.be.a('string');\r\n        pm.expect(jsonData[i].platform).to.be.a('string');\r\n        pm.expect(jsonData[i].releaseYear).to.be.a('number');\r\n        pm.expect(jsonData[i].genre).to.be.a('string');\r\n        pm.expect(jsonData[i].publisher).to.be.a('string');\r\n    }\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DELETE All Games",
+      "item": [
+        {
+          "name": "TC-026 - Delete all games in the collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const response = pm.response.json(); \r\n\r\npm.test(\"Delete all games in the Collection.\", function() {\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\npm.test(\"Return a successful message.\", function() {\r\n    pm.expect(response.status).to.eql(\"DELETE COLLECTION SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-027 - Delete all games in an empty collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const response = pm.response.json(); \r\n\r\npm.test(\"Delete all games in an empty collection.\", function() {\r\n    pm.response.to.have.status(200);\r\n})\r\n\r\npm.test(\"Return a successful message.\", function() {\r\n    pm.expect(response.status).to.eql(\"DELETE COLLECTION SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "GET ALL Games in an empty collection",
+      "item": [
+        {
+          "name": "TC-008 - Retrieve all games in an empty collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 200.\", function() {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Retrieve all games successfully.\", function() {\r\n    pm.expect(jsonData).to.be.an('array');\r\n    pm.expect(jsonData).to.be.empty;\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Reset data of the collection",
+      "item": [
+        {
+          "name": "Post Game 1 - Zelda",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"The Legend of Zelda: Breath of the Wild\",\r\n    \"platform\": \"Nintendo Switch\",\r\n    \"releaseYear\": 2017,\r\n    \"genre\": \"Action-adventure, Open-world\",\r\n    \"publisher\": \"Nintendo\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 2 - God of war",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"God of War (2018)\",\r\n    \"platform\": \"PlayStation 4\",\r\n    \"releaseYear\": 2018,\r\n    \"genre\": \"Action-adventure, RPG\",\r\n    \"publisher\": \"Sony Computer Entertainment\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 3 - Devil May Cry 5",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"Devil May Cry 5\",\r\n    \"platform\": \"PlayStation 4, Xbox One, PC\",\r\n    \"releaseYear\": 2019,\r\n    \"genre\": \"Action-adventure, Hack and slash\",\r\n    \"publisher\": \"Capcom\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 4 - Tekken 8",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"Tekken 8\",\r\n    \"platform\": \"PlayStation 5, Xbox Series X/S, PC\",\r\n    \"releaseYear\": 2024,\r\n    \"genre\": \"Fighting\",\r\n    \"publisher\": \"Bandai Namco Entertainment\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 5 - Like a dragon gaiden",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"Like a Dragon Gaiden: The Man Who Erased His Name\",\r\n    \"platform\": \"PlayStation 4, PlayStation 5, Xbox Series X/S, PC\",\r\n    \"releaseYear\": 2024,\r\n    \"genre\": \"Action RPG, Beat 'em up\",\r\n    \"publisher\": \"Sega\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "POST a new game in the collection",
+      "item": [
+        {
+          "name": "TC-009 - Add a new game with all fields populated",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 201.\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Return a successful message.\", function () {\r\n    pm.expect(jsonData.status).to.eql(\"CREATE ENTRY SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Onimusha - Way of the sword\",\r\n  \"platform\": \"PlayStation 5, Nintendo Switch 2, Xbox Series X and Series S, GeForce Now, Microsoft Windows\",\r\n  \"releaseYear\": 2026,\r\n  \"genre\": \"Action-adventure, Fighting, Role-playing\",\r\n  \"publisher\": \"Capcom\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-010 - Add a new game with at least one field empty, except game name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 201.\", function () {\r\n    pm.response.to.have.status(201);\r\n});\r\n\r\npm.test(\"Return a successful message.\", function () {\r\n    pm.expect(jsonData.status).to.eql(\"CREATE ENTRY SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Asura's Wrath\",\r\n  \"platform\": \"PlayStation 3\",\r\n  \"releaseYear\": 2012,\r\n  \"publisher\": \"Capcom\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-011 - Add a new game with empty game name",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 400.\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Return an error message indicating that the game name is required and cannot be empty.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game name is required and cannot be empty.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"platform\": \"PlayStation 1\",\r\n  \"releaseYear\": 1999,\r\n  \"genre\": \"Action-adventure\",\r\n  \"publisher\": \"Square Enix\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-012 - Add a new game with all fields empty",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 400.\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Return an error message indicating that the game name is required and cannot be empty.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game name is required and cannot be empty.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-013 - Add a new game with alphabetic data for the Release Year",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 400.\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Return an error message indicating a non-numeric release year.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Release year must be a valid number and greater than 0.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Chrono Trigger\",\r\n  \"platform\": \"PlayStation 1\",\r\n  \"releaseYear\": \"abcd\",\r\n  \"genre\": \"Action-adventure\",\r\n  \"publisher\": \"Square Enix\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-014 - Add a new game with special characters for the Release Year Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 400.\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Return an error message indicating a non-numeric release year.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Release year must be a valid number and greater than 0.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Chrono Trigger\",\r\n  \"platform\": \"PlayStation 1\",\r\n  \"releaseYear\": \"@#$%\",\r\n  \"genre\": \"Action-adventure\",\r\n  \"publisher\": \"Square Enix\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PUT an existing game",
+      "item": [
+        {
+          "name": "TC-015 - Edit an existing game successfully with at least one field updated",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 200.\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Return a successful message.\", function () {\r\n    pm.expect(jsonData.status).to.eql(\"UPDATE ITEM SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Onimusha - Way of the sword\",\r\n  \"platform\": \"PlayStation 5, Nintendo Switch 2, Xbox Series X and Series S, Microsoft Windows\",\r\n  \"releaseYear\": 2026,\r\n  \"genre\": \"Action-adventure, Fighting, Role-playing\",\r\n  \"publisher\": \"Capcom\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-016 - Edit an existing game successfully with all fields updated",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 200.\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Return a successful message.\", function () {\r\n    pm.expect(jsonData.status).to.eql(\"UPDATE ITEM SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Onimusha - Dawn of Dreams\",\r\n  \"platform\": \"PlayStation 2\",\r\n  \"releaseYear\": 2006,\r\n  \"genre\": \"Action-adventure, Role-playing\",\r\n  \"publisher\": \"Capcommmmmmm\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-017 - Edit an existing game using alphabetic data for the Release Year",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 400.\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Return an error indicating the non-numeric release year.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Release year must be a valid number and greater than 0.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Onimusha - Dawn of Dreams\",\r\n  \"platform\": \"PlayStation 2\",\r\n  \"releaseYear\": \"abc\",\r\n  \"genre\": \"Action-adventure, Role-playing\",\r\n  \"publisher\": \"Capcommmmmmm\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-018 - Edit an existing game using special characters for the Release Year",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 400.\", function () {\r\n    pm.response.to.have.status(400);\r\n});\r\n\r\npm.test(\"Return an error indicating the non-numeric release year.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Release year must be a valid number and greater than 0.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Onimusha - Dawn of Dreams\",\r\n  \"platform\": \"PlayStation 2\",\r\n  \"releaseYear\": \"@#$%\",\r\n  \"genre\": \"Action-adventure, Role-playing\",\r\n  \"publisher\": \"Capcommmmmmm\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-019 - Edit a game using a positive ID but non-existing in the collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return an error indicating the game not found.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found with provided ID.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Test Game\",\r\n  \"platform\": \"Test Platform\",\r\n  \"releaseYear\": 2026,\r\n  \"genre\": \"Test Genre\",\r\n  \"publisher\": \"Test Publisher\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/77",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "77"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-020 - Edit a game using an alphabetic ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return an error indicating the game not found.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be numeric and greater than 0!\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Test Game\",\r\n  \"platform\": \"Test Platform\",\r\n  \"releaseYear\": 2026,\r\n  \"genre\": \"Test Genre\",\r\n  \"publisher\": \"Test Publisher\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/abc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "abc"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-021 - Edit a game using a special character ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return an error indicating the game not found.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be numeric and greater than 0!\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"game\": \"Test Game\",\r\n  \"platform\": \"Test Platform\",\r\n  \"releaseYear\": 2026,\r\n  \"genre\": \"Test Genre\",\r\n  \"publisher\": \"Test Publisher\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/!@#",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "!@"
+              ],
+              "hash": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "DELETE an existing game",
+      "item": [
+        {
+          "name": "TC-022 - Delete an existing game in the collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 200.\", function () {\r\n    pm.response.to.have.status(200);\r\n});\r\n\r\npm.test(\"Return a successful message.\", function () {\r\n    pm.expect(jsonData.status).to.eql(\"DELETE ITEM SUCCESSFULLY\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/6",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "6"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-023 - Delete a game using a positive ID but non-existing in the collection",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return an error indicating the game not found.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found with provided ID.\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/99",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "99"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-024 - Delete a game using a alphabetic ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return an error indicating the game not found.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be numeric and greater than 0!\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/abc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "abc"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TC-025 - Delete a game using a special character ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "const jsonData = pm.response.json();\r\n\r\npm.test(\"Status code is 404.\", function () {\r\n    pm.response.to.have.status(404);\r\n});\r\n\r\npm.test(\"Return an error indicating the game not found.\", function () {\r\n    pm.expect(jsonData.error).to.eql(\"Game not found. ID must be numeric and greater than 0!\");\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/!@#",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "!@"
+              ],
+              "hash": ""
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "RESET data of the follection",
+      "item": [
+        {
+          "name": "Delete data before later regression testing",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r\n    pm.response.to.have.status(200);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 1 - Zelda Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"The Legend of Zelda: Breath of the Wild\",\r\n    \"platform\": \"Nintendo Switch\",\r\n    \"releaseYear\": 2017,\r\n    \"genre\": \"Action-adventure, Open-world\",\r\n    \"publisher\": \"Nintendo\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 2 - God of war Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"God of War (2018)\",\r\n    \"platform\": \"PlayStation 4\",\r\n    \"releaseYear\": 2018,\r\n    \"genre\": \"Action-adventure, RPG\",\r\n    \"publisher\": \"Sony Computer Entertainment\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 3 - Devil May Cry 5 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"Devil May Cry 5\",\r\n    \"platform\": \"PlayStation 4, Xbox One, PC\",\r\n    \"releaseYear\": 2019,\r\n    \"genre\": \"Action-adventure, Hack and slash\",\r\n    \"publisher\": \"Capcom\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 4 - Tekken 8 Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"Tekken 8\",\r\n    \"platform\": \"PlayStation 5, Xbox Series X/S, PC\",\r\n    \"releaseYear\": 2024,\r\n    \"genre\": \"Fighting\",\r\n    \"publisher\": \"Bandai Namco Entertainment\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Post Game 5 - Like a dragon gaiden Copy",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 201.\", function() {\r\n    pm.response.to.have.status(201);\r\n});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"game\": \"Like a Dragon Gaiden: The Man Who Erased His Name\",\r\n    \"platform\": \"PlayStation 4, PlayStation 5, Xbox Series X/S, PC\",\r\n    \"releaseYear\": 2024,\r\n    \"genre\": \"Action RPG, Beat 'em up\",\r\n    \"publisher\": \"Sega\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": ""
+    }
+  ]
+}
