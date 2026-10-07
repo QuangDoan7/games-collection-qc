@@ -1,5 +1,7 @@
 # Games Collection API - Quality Control Project
 
+[![Games Collection API Tests](https://github.com/QuangDoan7/games-collection-qc/actions/workflows/api-tests.yml/badge.svg)](https://github.com/QuangDoan7/games-collection-qc/actions/workflows/api-tests.yml)
+
 ## Project Overview
 
 The Games Collection API - Quality Control Project is designed to evaluate the reliability and correctness of the Games Collection REST API.
@@ -145,3 +147,25 @@ To run the automated tests using Newman, follow these steps:
    ```
 
 4. Review the test results displayed in the terminal to verify the execution status and any failed assertions.
+
+## Continuous Integration (CI)
+
+This Games Collection Quality Control project integrates `GitHub Action` to automatically execute API regression tests whenever changes are pushed to the main branch of the QA repository. The workflow can also be triggered manually via the GitHub Actions interface.
+
+### Continuous Integration (CI) Workflow
+
+1. Check out the QC Repository and the application under test.
+2. Set up Node.js and install backend dependencies.
+3. Start the Express.js backend server and verify API availability.
+4. Install Newman.
+5. Execute the Postman API regression test collection.
+6. Report test results and mark the workflow as failed if any tests/assertions fail.
+
+### Latest Verified CI Execution:
+
+- 38 API Requests executed.
+- 65 assertions passed.
+- 0 assertions failed.
+- Execution environment: GitHub-hosted Ubuntu runner
+
+The CI pipeline enables automated regression testing in a reproductible environment without requiring manual test execution on a local machine.
