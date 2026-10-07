@@ -113,14 +113,14 @@ games-collection-qc/
 
 ## Key Defects Identified
 
-| Defect ID | Description                                                                                                            | Status   |
-| --------- | ---------------------------------------------------------------------------------------------------------------------- | -------- |
-| BUG-001   | GET Game by ID Returns `200 OK` for a Non-existing Game                                                                | RESOLVED |
-| BUG-002   | POST New Game Returns `200 OK` instead of `201 Created`                                                                | RESOLVED |
+| Defect ID | Description                                                                                                                | Status   |
+| --------- | -------------------------------------------------------------------------------------------------------------------------- | -------- |
+| BUG-001   | GET Game by ID Returns `200 OK` for a Non-existing Game                                                                    | RESOLVED |
+| BUG-002   | POST New Game Returns `200 OK` instead of `201 Created`                                                                    | RESOLVED |
 | BUG-003   | POST New Game accepts Missing Required Game Name or Invalid Release Year and Returns `200 OK` instead of `400 Bad Request` | RESOLVED |
-| BUG-004   | PUT Existing Game Using Invalid Release Year Returns `200 OK` instead of `400 Bad Request`                             | RESOLVED |
-| BUG-005   | PUT Existing Game Using Invalid/Non-existing ID Returns `200 OK` instead of `404 Not Found`                            | RESOLVED |
-| BUG-006   | DELETE Game Using Invalid/Non-existing ID Returns `200 OK` instead of `404 Not Found`                                  | RESOLVED |
+| BUG-004   | PUT Existing Game Using Invalid Release Year Returns `200 OK` instead of `400 Bad Request`                                 | RESOLVED |
+| BUG-005   | PUT Existing Game Using Invalid/Non-existing ID Returns `200 OK` instead of `404 Not Found`                                | RESOLVED |
+| BUG-006   | DELETE Game Using Invalid/Non-existing ID Returns `200 OK` instead of `404 Not Found`                                      | RESOLVED |
 
 ## How to Run the Automated Tests
 
