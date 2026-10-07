@@ -1,4 +1,4 @@
-name: Games Collection API Tests
+name: Games Collection API Regression Tests
 
 on:
   push:
