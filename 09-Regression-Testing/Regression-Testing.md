@@ -2,10 +2,10 @@
 
 ## Regression Information
 
-**Environment:** Localhost - http://localhost:3001
-**Operating System:** Windows 11 Pro
-**API:** RESTful API - http://localhost:3001/api
-**Tool:** Postman
+**Environment:** Localhost - http://localhost:3001  
+**Operating System:** Windows 11 Pro  
+**API:** RESTful API - http://localhost:3001/api  
+**Tool:** Postman  
 **Regression Status:** PASS
 
 ## Regression Testing Results

@@ -2,9 +2,9 @@
 
 ## TC-001 - Retrieve an Existing Game by ID
 
-**Related Requirement:** REQ-GAME-001
-**Related Scenario:** TS-001
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-001  
+**Related Scenario:** TS-001  
+**Test Classification:** Positive  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -32,9 +32,9 @@
 
 ## TC-002 - Retrieve a game with ID 0
 
-**Related Requirement:** REQ-GAME-001
-**Related Scenario:** TS-002
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-001  
+**Related Scenario:** TS-002  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -61,9 +61,9 @@
 
 ## TC-003 - Retrieve a game using a negative ID
 
-**Related Requirement:** REQ-GAME-001
-**Related Scenario:** TS-002
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-001  
+**Related Scenario:** TS-002  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -90,9 +90,9 @@
 
 ## TC-004 - Retrieve a game using a positive ID but non-existing in the collection
 
-**Related Requirement:** REQ-GAME-001
-**Related Scenario:** TS-002
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-001  
+**Related Scenario:** TS-002  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -120,9 +120,9 @@
 
 ## TC-005 - Retrieve a game using an alphabetic ID
 
-**Related Requirement:** REQ-GAME-001
-**Related Scenario:** TS-003
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-001  
+**Related Scenario:** TS-003  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -149,9 +149,9 @@
 
 ## TC-006 - Retrieve a game using special characters in the ID
 
-**Related Requirement:** REQ-GAME-001
-**Related Scenario:** TS-003
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-001  
+**Related Scenario:** TS-003  
+**Test Classification:** Negative  
 **Test Technique:** Error Guessing
 
 ### Preconditions
@@ -178,9 +178,9 @@
 
 ## TC-007 - Retrieve all games in the collection
 
-**Related Requirement:** REQ-GAME-002
-**Related Scenario:** TS-004
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-002  
+**Related Scenario:** TS-004  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -203,9 +203,9 @@
 
 ## TC-008 - Retrieve all games in an empty collection
 
-**Related Requirement:** REQ-GAME-002
-**Related Scenario:** TS-005
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-002  
+**Related Scenario:** TS-005  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -229,9 +229,9 @@
 
 ## TC-009 - Add a new game with all fields populated
 
-**Related Requirement:** REQ-GAME-003, REQ-VAL-001
-**Related Scenario:** TS-006
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-003, REQ-VAL-001  
+**Related Scenario:** TS-006  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -268,9 +268,9 @@
 
 ## TC-010 - Add a new game with at least one field empty, except game name
 
-**Related Requirement:** REQ-GAME-003, REQ-VAL-001
-**Related Scenario:** TS-007
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-003, REQ-VAL-001  
+**Related Scenario:** TS-007  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -306,9 +306,9 @@
 
 ## TC-011 - Add a new game with empty game name
 
-**Related Requirement:** REQ-GAME-003, REQ-VAL-001
-**Related Scenario:** TS-007
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-003, REQ-VAL-001  
+**Related Scenario:** TS-007  
+**Test Classification:** Negative  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -344,9 +344,9 @@
 
 ## TC-012 - Add a new game with all fields empty
 
-**Related Requirement:** REQ-GAME-003, REQ-VAL-001
-**Related Scenario:** TS-008
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-003, REQ-VAL-001  
+**Related Scenario:** TS-008  
+**Test Classification:** Negative  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -377,9 +377,9 @@
 
 ## TC-013 - Add a new game with alphabetic data for the Release Year
 
-**Related Requirement:** REQ-GAME-003, REQ-VAL-002
-**Related Scenario:** TS-009
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-003, REQ-VAL-002  
+**Related Scenario:** TS-009  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -416,9 +416,9 @@
 
 ## TC-014 - Add a new game with special characters for the Release Year
 
-**Related Requirement:** REQ-GAME-003, REQ-VAL-002
-**Related Scenario:** TS-009
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-003, REQ-VAL-002  
+**Related Scenario:** TS-009  
+**Test Classification:** Negative  
 **Test Technique:** Error Guessing
 
 ### Preconditions
@@ -455,9 +455,9 @@
 
 ## TC-015 - Edit an existing game successfully with at least one field updated
 
-**Related Requirement:** REQ-GAME-004
-**Related Scenario:** TS-010
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-004  
+**Related Scenario:** TS-010  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -498,9 +498,9 @@
 
 ## TC-016 - Edit an existing game successfully with all fields updated
 
-**Related Requirement:** REQ-GAME-004
-**Related Scenario:** TS-011
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-004  
+**Related Scenario:** TS-011  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -540,9 +540,9 @@
 
 ## TC-017 - Edit an existing game using alphabetic data for the Release Year
 
-**Related Requirement:** REQ-GAME-004, REQ-VAL-002
-**Related Scenario:** TS-012
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-004, REQ-VAL-002  
+**Related Scenario:** TS-012  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -582,9 +582,9 @@
 
 ## TC-018 - Edit an existing game using special characters for the Release Year
 
-**Related Requirement:** REQ-GAME-004, REQ-VAL-002
-**Related Scenario:** TS-012
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-004, REQ-VAL-002  
+**Related Scenario:** TS-012  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -624,9 +624,9 @@
 
 ## TC-019 - Edit a game using a positive ID but non-existing in the collection
 
-**Related Requirement:** REQ-GAME-004
-**Related Scenario:** TS-013
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-004  
+**Related Scenario:** TS-013  
+**Test Classification:** Negative  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -666,9 +666,9 @@
 
 ## TC-020 - Edit a game using an alphabetic ID
 
-**Related Requirement:** REQ-GAME-004
-**Related Scenario:** TS-014
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-004  
+**Related Scenario:** TS-014  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -713,9 +713,9 @@
 
 ## TC-021 - Edit a game using a special character ID
 
-**Related Requirement:** REQ-GAME-004
-**Related Scenario:** TS-014
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-004  
+**Related Scenario:** TS-014  
+**Test Classification:** Negative  
 **Test Technique:** Error Guessing
 
 ### Preconditions
@@ -754,9 +754,9 @@
 
 ## TC-022 - Delete an existing game in the collection.
 
-**Related Requirement:** REQ-GAME-005
-**Related Scenario:** TS-015
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-005  
+**Related Scenario:** TS-015  
+**Test Classification:** Positive  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -784,9 +784,9 @@
 
 ## TC-023 - Delete a game using a positive ID but non-existing in the collection.
 
-**Related Requirement:** REQ-GAME-005
-**Related Scenario:** TS-016
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-005  
+**Related Scenario:** TS-016  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -815,9 +815,9 @@
 
 ## TC-024 - Delete a game using a alphabetic ID.
 
-**Related Requirement:** REQ-GAME-005
-**Related Scenario:** TS-017
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-005  
+**Related Scenario:** TS-017  
+**Test Classification:** Negative  
 **Test Technique:** Equivalence Partitioning
 
 ### Preconditions
@@ -846,9 +846,9 @@
 
 ## TC-025 - Delete a game using a special character ID.
 
-**Related Requirement:** REQ-GAME-005
-**Related Scenario:** TS-017
-**Test Classification:** Negative
+**Related Requirement:** REQ-GAME-005  
+**Related Scenario:** TS-017  
+**Test Classification:** Negative  
 **Test Technique:** Error Guessing
 
 ### Preconditions
@@ -877,9 +877,9 @@
 
 ## TC-026 - Delete all games in the collection.
 
-**Related Requirement:** REQ-GAME-006
-**Related Scenario:** TS-018
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-006  
+**Related Scenario:** TS-018  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions
@@ -903,9 +903,9 @@
 
 ## TC-027 - Delete all games with empty collection.
 
-**Related Requirement:** REQ-GAME-006
-**Related Scenario:** TS-019
-**Test Classification:** Positive
+**Related Requirement:** REQ-GAME-006  
+**Related Scenario:** TS-019  
+**Test Classification:** Positive  
 **Test Technique:** N/A
 
 ### Preconditions

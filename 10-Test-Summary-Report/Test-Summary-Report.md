@@ -2,12 +2,12 @@
 
 ## 1. Test Summary Information
 
-**Web Application:** Games Collection
-**Test Type:** Manual Functional API Testing
-**Environment:** Localhost - http://localhost:3001
-**Operating System:** Windows 11 Pro
-**API:** RESTful API - http://localhost:3001/api
-**Testing Tool:** Postman
+**Web Application:** Games Collection  
+**Test Type:** Manual Functional API Testing  
+**Environment:** Localhost - http://localhost:3001  
+**Operating System:** Windows 11 Pro  
+**API:** RESTful API - http://localhost:3001/api  
+**Testing Tool:** Postman  
 **Final Test Status:** PASS
 
 ## 2. Testing Objective
