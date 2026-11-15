@@ -6,7 +6,7 @@
 **Tool:** Postman  
 **CLI Runner:** Newman  
 **Environment:** Localhost  
-**Base URL:** http://localhost:3001  
+**Base URL:** http://localhost:3001
 
 ## Objective
 

@@ -5,7 +5,7 @@
 **Related Test Cases:** TC-002, TC-003, TC-004, TC-005, TC-006  
 **Severity:** Medium // This defect affects the correctness of the API response for non-existing games.  
 **Priority:** Medium // The priority is set to medium as it impacts the API's correctness but does not block functionality.  
-**Status:** Open
+**Status:** Resolved
 
 ### Description
 
@@ -48,7 +48,7 @@ When retrieving a game by its ID that does not exist in the collection, the API 
 **Related Test Cases:** TC-009, TC-010  
 **Severity:** Low (This defect has a minor impact on the API's behavior as it only affects the status code returned for successful POST requests.)  
 **Priority:** Medium (The priority is set to medium as it does not block functionality but should be corrected for proper API behavior.)  
-**Status:** Open
+**Status:** Resolved
 
 ### Description
 
@@ -110,7 +110,7 @@ TC-010: Provide game details with information as follows:
 **Related Test Cases:** TC-011, TC-012, TC-013, TC-014  
 **Severity:** Medium (This defect affects the API's validation logic for required fields and data types.)  
 **Priority:** High (This defect should be addressed promptly due to its impact on data integrity.)  
-**Status:** Open
+**Status:** Resolved
 
 ### Description
 
@@ -256,7 +256,7 @@ The API allows updating an existing game with an invalid Release Year value, suc
 **Related Test Cases:** TC-019, TC-020, TC-021  
 **Severity:** Medium (This defect affects the API's handling of invalid or non-existing IDs.)  
 **Priority:** Medium (This defect affects the API's handling of invalid or non-existing IDs.)  
-**Status:** Open
+**Status:** Resolved
 
 ### Description
 
@@ -314,7 +314,7 @@ When attempting to update a game using an invalid or non-existing ID, the API re
 **Related Test Cases:** TC-023, TC-024, TC-025  
 **Severity:** Medium (This defect affects the API's handling of invalid or non-existing IDs.)  
 **Priority:** Medium (This defect affects the API's handling of invalid or non-existing IDs.)  
-**Status:** Open
+**Status:** Resolved
 
 ### Description
 
