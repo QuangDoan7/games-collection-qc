@@ -2,11 +2,11 @@
 
 ## Automation Information
 
-**API:** RESTful API
-**Tool:** Postman
-**CLI Runner:** Newman
-**Environment:** Localhost
-**Base URL:** http://localhost:3001
+**API:** RESTful API  
+**Tool:** Postman  
+**CLI Runner:** Newman  
+**Environment:** Localhost  
+**Base URL:** http://localhost:3001  
 
 ## Objective
 
